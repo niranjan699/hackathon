@@ -1,0 +1,235 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="default.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+ <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/jquery.validate.js">
+	</script>
+	
+		<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <!— For calendar popup —>
+  <style>
+ 
+    /* Remove the navbar's default margin-bottom and rounded borders */ 
+    .navbar {
+      margin-bottom: 0;
+      border-radius: 0;
+    }
+    label.error {
+  color: #a94442;
+  border-color: #ebccd1;
+  font-size: 12px;
+  /*padding:1px 20px 1px 20px;*/
+}
+    /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
+    .row.content {height: 450px}
+    
+    /* Set gray background color and 100% height */
+    .sidenav {
+      padding-top: 20px;
+      background-color: #f1f1f1;
+      height: 100%;
+    }
+    
+    /* Set black background color, white text and some padding */
+    footer {
+      background-color: #555;
+      color: white;
+      padding: 15px;
+    }
+    
+    /* On small screens, set height to 'auto' for sidenav and grid */
+    @media screen and (max-width: 767px) {
+      .sidenav {
+        height: auto;
+        padding: 15px;
+      }
+      .row.content {height:auto;} 
+    }
+  </style>
+  <script>
+  $(document).ready(function(){
+     $('[data-popup-open]').on('click', function(e)  {
+        var targeted_popup_class = jQuery(this).attr('data-popup-open');
+        $('[data-popup="' + targeted_popup_class + '"]').fadeIn(350);
+     $('#admin_login').css("opacity","0.06");
+        e.preventDefault();
+		 $( "#accordion" ).hide();
+    });
+ 
+    //---— CLOSE
+    $('[data-popup-close]').on('click', function(e)  {
+        var targeted_popup_class = jQuery(this).attr('data-popup-close');
+        $('[data-popup="' + targeted_popup_class + '"]').fadeOut(350);
+     $('#admin_login').css("opacity","1");
+	  $( "#accordion" ).show();
+        e.preventDefault();
+    });
+	
+	
+  $("#loginForm").validate({
+        rules: {
+            mail: {
+                required: true, email:true
+            },
+            pwd: {
+                required: true
+            }
+        },
+        messages: {
+            mail: {
+                required: "Please enter email.", email: "Please enter valid email."
+            },
+            pwd: {
+                required: "Please enter password."
+            }
+        }
+    });
+	
+	
+	
+	
+
+      $.ajax({
+        type: "GET",
+        url: "retrieve.php",
+        dataType: "html",
+        success: function(result)
+        {
+    parser = new DOMParser();
+xmlDoc = parser.parseFromString(result,"text/xml");
+
+var a =
+xmlDoc.getElementsByTagName("COMPANY");
+	
+var descri="";
+	
+	var formli="";
+	
+	for (var i = 0; i< a.length; i++) {
+    
+	 descri+= "<h3>"+a[i].getElementsByTagName("NAME")[0].childNodes[0].nodeValue+"</h3>  <div> <p>"+
+				a[i].getElementsByTagName("DESCRI")[0].childNodes[0].nodeValue+"</p></div>";
+	 formli+= "<p><a href="+a[i].getElementsByTagName("FORML")[0].childNodes[0].nodeValue  +">"+         a[i].getElementsByTagName("NAME")[0].childNodes[0].nodeValue+"</a></p>"			
+
+  }
+$("#formli").html(formli);
+        
+		$("#accordion").html(descri);
+		
+		
+	 $( "#accordion" ).accordion({
+      heightStyle: "fill",
+	  collapsible:"true"
+    });	
+	
+	
+	
+	
+	
+	
+	
+		
+        }
+      });
+    
+	
+	
+	
+ 
+	
+	
+	
+	
+  });
+  
+  
+ 
+  
+ 
+  </script>
+  
+  <style>
+  #accordion-resizer {
+    padding: 10px;
+    width: 100%;
+    height:auto;
+  }
+  </style>
+</head>
+<body>
+
+
+
+<div id="header-wrapper">
+  <div id="header-wrapper2">
+    <div id="header" class="container" >
+      <div id="logo">
+        <h1><span style="color:white">BMSCE PLACEMENTS</span></a></h1>
+      </div>
+      
+    </div>
+  </div>
+</div>  
+<div class="container-fluid text-center">    
+  <div class="row content">
+    <div class="col-sm-2 sidenav">
+      <p><a class="btn" data-popup-open="popup-1" href="#">Checkout for Schedule</a></p>
+      <div id="formli"
+	  >   </div>
+    </div>
+    <div class="col-sm-8 text-left" style="padding-top: 20px">
+
+    <div class="popup" data-popup="popup-1">
+      <div class="popup-inner">
+        <h2> Schedule       </h2>
+        <iframe src="https://calendar.google.com/calendar/embed?showTitle=0&amp;height=400&amp;wkst=1&amp;bgcolor=%23FFFFFF&amp;src=nghegde1729%40gmail.com&amp;color=%23B1440E&amp;src=snipdcpolvvvlc7qpvmip22168%40group.calendar.google.com&amp;color=%237A367A&amp;src=%23contacts%40group.v.calendar.google.com&amp;color=%2329527A&amp;src=en.indian%23holiday%40group.v.calendar.google.com&amp;color=%230F4B38&amp;ctz=Asia%2FCalcutta" style="border-width:0" width="700" height="400" frameborder="0" scrolling="no"></iframe>
+        <p><a data-popup-close="popup-1" href="#">Close</a></p>
+        <a class="popup-close" data-popup-close="popup-1" href="#">x</a>
+      </div>
+      </div>
+
+
+<div id="accordion-resizer" class="ui-widget-content">
+		<div id="accordion">
+			
+		
+		</div>
+</div>
+
+    </div>
+    <div class="col-sm-2 sidenav" id="admin_login"> 
+      <div class="container1">
+       <form id="loginForm" class="form-login">
+            <h4><b>Admin Login</b></h4>
+            <input type="text" id="mail" name="mail" class="form-control input chat-input" placeholder="username" style="padding-top: 10px" />
+            </br>
+            <input type="text" id="pwd" name="pwd" class="form-control input chat-input" placeholder="password" />
+            </br>
+            <div class="wrapper1">
+            <span class="group-btn">     
+              <button type="submit" id="adm_login_btn" class="btn btn-primary btn-md">login <i class="fa fa-sign-in"></i></button>
+            </span>
+            </div>
+        </form>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+<!--<footer class="container-fluid text-center">
+  <p>Footer Text</p>
+</footer>-->
+
+</body>
+</html>

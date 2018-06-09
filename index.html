@@ -1,0 +1,172 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>BMSCE PLACEMENTS</title>
+ 
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="default.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+ <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/jquery.validate.js">
+	</script>
+	
+		<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <!-- For calendar popup -->
+  <style>
+ 
+    /* Remove the navbar's default margin-bottom and rounded borders */ 
+    .navbar {
+      margin-bottom: 0;
+      border-radius: 0;
+    }
+    label.error {
+  color: #a94442;
+  border-color: #ebccd1;
+  font-size: 12px;
+  /*padding:1px 20px 1px 20px;*/
+}
+    /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
+    .row.content {height: 450px}
+    
+    /* Set gray background color and 100% height */
+    .sidenav {
+      padding-top: 20px;
+      background-color: #f1f1f1;
+      height: 100%;
+    }
+    
+    /* Set black background color, white text and some padding */
+    footer {
+      background-color: #555;
+      color: white;
+      padding: 15px;
+    }
+    
+    /* On small screens, set height to 'auto' for sidenav and grid */
+    @media screen and (max-width: 767px) {
+      .sidenav {
+        height: auto;
+        padding: 15px;
+      }
+      .row.content {height:auto;} 
+    }
+
+
+  #panel-size{
+    max-height: 230px;
+    max-width: 300px;
+    min-height: 230px;
+    min-width: 300px;
+
+  }
+
+
+  </style>
+  <script>
+ 
+	
+	
+	
+	
+	
+	
+		var n=11
+  var a=["Placements","Academics","Events"]
+  var headings=["placement","academics","events"]
+  var content='<div>Place<br/>Venue<br/>Time<br/><br/><br/><br/><a href="" style="float:right">Read More..</a>'
+    $(document).ready(function()
+    {
+      for(i=0;i<11;i++)
+      {
+        if(i%4==0)
+        {
+          $("#accordion").append('<div class="row"');
+        }
+
+
+        $("accordion").append('<div class="col-sm-3"><div id="panel-size" class="panel panel-primary">'+
+             '<div  class="panel-heading">'+a[i%3]+ '</div>'+
+            '<div  class="panel-body" >'+content+'</div>'+
+          ' </div> </div> </div>');
+
+
+          if(i%4==0)
+          {
+            $("accordion").append('</div>');
+          }
+
+      }
+
+     
+    });
+ 
+  
+ 
+  </script>
+  
+  <style>
+  #accordion-resizer {
+    padding: 10px;
+    width: 100%;
+    height:auto;
+  }
+  </style>
+</head>
+<body>
+
+
+
+<div id="header-wrapper">
+  <div id="header-wrapper2">
+    <div id="header" class="container" >
+      <div id="logo">
+        <h1><span style="color:white"> SHARE FOOD </span></a></h1>
+      </div>
+      
+    </div>
+  </div>
+</div>  
+<div class="container-fluid text-center">    
+  <div class="row content">
+
+
+
+
+<div class="col-sm-2 sidenav">
+      <h4 style="padding-top: 10px" class="text-center"><b>Welcome, Admin!</b></h4>
+      <div style="display:table-cell; vertical-align:middle; text-align:center">
+      <img src="images/admin.png" class="img-circle" height="100" width="100" alt="Avatar">
+      </div>
+      <ul class="nav nav-pills nav-stacked" style="padding-top: 10px">
+        <li class="active" data-toggle="modal" data-target="#myModal"><a href="#section1">Home</a></li>
+        <li class="active"><a href="#section2">Requests For Me</a></li>
+          <li class="active"><a href="#section2">Pending Request</a></li>
+        <li class="active"><a href="#section3">Log Out</a></li>
+      </ul><br>
+   
+    </div>
+
+
+<div id="k" >
+		<div id="accordion">
+			
+		
+		</div>
+</div>
+
+    </div>
+    
+
+  </div>
+</div>
+
+
+<!--<footer class="container-fluid text-center">
+  <p>Footer Text</p>
+</footer>-->
+
+</body>
+</html>
