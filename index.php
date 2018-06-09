@@ -48,15 +48,17 @@ input[type="submit"] {
 <div align="center" style="padding-right: 40px;padding-left: 40px;">
 <br><br>
 <?php
-if(isset($_GET['error']))
-  echo '<p align="center" style="padding-right:20px;"><font size="2" color="#545454">Invalid Username or Password</font></p>';
+if(isset($_GET['msg'])){
+  $msg = $_GET['msg'];
+  echo('<p align="center" style="padding-right:20px;"><font size="2" color="#545454">'.$msg.'</font></p>');
+}
 ?>
 <br>
 <form action="validate.php" method="post">
 <font size="4" color="#545454"><strong>LOGIN </strong></font>
 <br><br>
-<input type="text" name="email" placeholder="EMAIL" size="30" style="border:2px solid #545454;border-radius:5px;" /><br>
-<input type="password" name="password" placeholder="PASSWORD" size="30" style="border:2px solid #545454;border-radius:5px;" /><br>
+<input type="text" name="email" placeholder="EMAIL" size="30" style="border:2px solid #545454;border-radius:5px;" required /><br>
+<input type="password" name="password" placeholder="PASSWORD" size="30" style="border:2px solid #545454;border-radius:5px;" required/><br>
 <input type="submit" value="LOGIN" size="30" style="border:2px solid #545454;border-radius:7px;" />
 
 <p align="right" style="padding-right:20px;"><font size="2" color="#545454">New User? <a href="signUp.html">Click here to Sign Up </a></font></p>

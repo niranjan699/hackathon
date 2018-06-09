@@ -24,21 +24,22 @@ if ($_SERVER["REQUEST_METHOD"] != "POST") {
 	} 
 
 	$sql = 'SELECT * FROM users WHERE email LIKE "'.$email.'";';
-	echo($sql);
 	
 	$result = $conn->query($sql);
 	if (!$result) {
     trigger_error('Invalid query: ' . $conn->error);
 	}
 	if($result->num_rows == 0){
-		header('location:index.php?error=1');
+		header('location:index.php?msg=Invalid Username or Password');
 	}else{
 		$row = $result->fetch_assoc();
 		if($row['password'] == $password){
-			$_SESSION["email"] = $email;
+			$_SESSION['email'] = $email;
+			$_SESSION['name'] = $row['name'];
+			$_SESSION['user_id'] = $row['id'];
 			header('location:donations.php');
 		}else{
-			header('location:index.php?error=1');
+			header('location:index.php?msg=Invalid Username or Password');
 		}
 	}
 	$conn->close();
