@@ -262,7 +262,7 @@ hr
 	overflow: hidden;
 	padding-top:0px;
 	height: 150px;
-	background: url('images/header.jpg') no-repeat top center;
+	background: #0e873a no-repeat top center;
 	background-size: 100% 100%;
 	opacity: .75;
 }

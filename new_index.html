@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Food Share</title>
+  <title>BMSCE PLACEMENTS</title>
  
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <link rel="stylesheet" href="default.css">
@@ -10,25 +10,30 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
  <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
- <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/jquery.validate.js">
 	</script>
 	
 		<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
   <!-- For calendar popup -->
   <style>
-
  
     /* Remove the navbar's default margin-bottom and rounded borders */ 
-   /* Set height of the grid so .sidenav can be 100% (adjust if needed) */
-    .row.content {height: 100%}
+    .navbar {
+      margin-bottom: 0;
+      border-radius: 0;
+    }
+    label.error {
+  color: #a94442;
+  border-color: #ebccd1;
+  font-size: 12px;
+  /*padding:1px 20px 1px 20px;*/
+}
+    /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
+    .row.content {height: 450px}
     
     /* Set gray background color and 100% height */
     .sidenav {
+      padding-top: 20px;
       background-color: #f1f1f1;
       height: 100%;
     }
@@ -43,22 +48,22 @@
     /* On small screens, set height to 'auto' for sidenav and grid */
     @media screen and (max-width: 767px) {
       .sidenav {
-        height: 100%;
+        height: auto;
         padding: 15px;
       }
-      .row.content {height: auto;} 
+      .row.content {height:auto;} 
     }
-
   </style>
+  
   <script>
  
-	
-	
-	
-	
-	
-	
-	
+  
+  
+  
+  
+  
+  
+  
     $(document).ready(function()
     {
 
@@ -68,9 +73,9 @@
   var headings=["Post1","Post1","Post1"];
   var content='<div>Place<br/>Venue<br/>Time<br/><br/><br/><br/><button>click</button>';
 
-      for(i=0;i<7;i++)
+      for(i=0;i<17;i++)
       {
-        if(i%3==0)
+        if(i%4==0)
         {
           $("#accordion").append('<div> <div class="row"');
           alert(i);
@@ -83,7 +88,7 @@
           ' </div> </div> </div>');
 
 
-          if(i%5==0)
+          if(i%4==0)
           {
             $("#accordion").append('</div></div>');
           }
@@ -113,13 +118,14 @@
   <div id="header-wrapper2">
     <div id="header" class="container" >
       <div id="logo">
-        <h1><span style="color:white"> SHARE FOOD </span></a></h1>
+        <h1><span style="color:white">SHARE THE FOOD</span></a></h1>
       </div>
       
     </div>
   </div>
 </div>  
-<div class="container-fluid">
+
+<div class="container-fluid text-center">    
   <div class="row content">
     <div class="col-sm-2 sidenav">
       <h4 style="padding-top: 10px" class="text-center"><b>Welcome, User!</b></h4>
@@ -131,36 +137,43 @@
          <li class="active"><a href="#section2">Your Requests</a></li>
         <li class="active"><a href="#section2">Requests For You</a></li>
       </ul><br>
-      <!--<div class="input-group">
-        <input type="text" class="form-control" placeholder="Search Blog..">
-        <span class="input-group-btn">
-          <button class="btn btn-default" type="button">
-            <span class="glyphicon glyphicon-search"></span>
-          </button>
-        </span>
-      </div>-->
+    </div>
+	 
+    <div class="col-sm-8 text-left" style="padding-top: 20px">
+
+    
+
+
+<div >
+		<div id="accordion">
+			
+		
+		</div>
+</div>
+
     </div>
 
-    <div class="col-sm-9">
 
-      <br/>
-      <h4>RECENT POSTS</h4>
-      <hr>
 
-      <div class="container" id="panels">
-        <div>
 
-        <div id="accordion"></div>
-</div>
+    <div class="col-sm-2 sidenav" id="admin_login"> 
+      <div class="container1">
+     
+
+      <!--Fill user details here-->
+
+
       </div>
+    </div>
+
+  </div>
+</div>
 
 
 
 
-
-
-  <!-- Modal -->
-  <div class="modal fade" id="myModal" role="dialog">
+<!--Modal for entry-->
+<div class="modal fade" id="myModal" role="dialog">
     <div class="modal-dialog">
     
       <!-- Modal content-->
@@ -196,14 +209,6 @@
       </div>  
     </div>
   </div>
-<!---->
-
-
-    </div>
-  </div>
-</div>
-
-
 
 <!--<footer class="container-fluid text-center">
   <p>Footer Text</p>
