@@ -58,7 +58,7 @@
   <script>
  
   
-  
+    
   
   
   
@@ -69,6 +69,37 @@
 
 
   var n=11;
+  var a=["Post1","Post1","Post1"];
+  var headings=["Post1","Post1","Post1"];
+  var content='<div>Place<br/>Venue<br/>Time<br/><br/><br/><br/><button>click</button>';
+
+      for(i=0;i<17;i++)
+      {
+        if(i%4==0)
+        {
+          $("#accordion").append('<div> <div class="row"');
+          
+        }
+
+
+        $("#accordion").append('<div class="col-sm-3"><div id="panel" class="panel panel-primary">'+
+             '<div  class="panel-heading">'+a[i%3]+ '</div>'+
+            '<div  class="panel-body" >'+content+'</div>'+
+          ' </div> </div> </div>');
+
+
+          if(i%4==0)
+          {
+            $("#accordion").append('</div></div>');
+          }
+
+      }
+
+
+
+
+       $('#home').on('click', function () {
+   var n=11;
   var a=["Post1","Post1","Post1"];
   var headings=["Post1","Post1","Post1"];
   var content='<div>Place<br/>Venue<br/>Time<br/><br/><br/><br/><button>click</button>';
@@ -95,9 +126,24 @@
 
       }
 
+
+
+
+    });
+
+  $('#rfu').on('click', function () {
+        alert('requst for u');
+    });
+
+$('#pending_r').on('click', function () {
+        alert('pending requests');
+    });
+
      
     });
  
+
+
   
  
   </script>
@@ -133,9 +179,9 @@
       <img src="images/admin.png" class="img-circle" height="100" width="100" alt="Avatar">
       </div>
       <ul class="nav nav-pills nav-stacked" style="padding-top: 10px">
-        <li class="active" data-toggle="modal" data-target="#myModal"><a href="#section1">Home</a></li>
-         <li class="active"><a href="#section2">Your Requests</a></li>
-        <li class="active"><a href="#section2">Requests For You</a></li>
+        <li class="active" id="home"><a  href="#section1">Home</a></li>
+         <li class="active" id="rfu"><a href="#section2">Your Requests</a></li>
+        <li class="active" id="pending_r"><a href="#section3">Requests For You</a></li>
       </ul><br>
     </div>
 	 
