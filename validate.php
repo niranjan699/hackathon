@@ -1,4 +1,5 @@
 <?php
+$config = include('config.php');
 ini_set('display_errors', 'On');
 error_reporting(E_ALL);
 session_start();
@@ -12,10 +13,10 @@ if ($_SERVER["REQUEST_METHOD"] != "POST") {
 	$email = $_POST["email"];
 	$password = $_POST["password"];
 
-	$dbserver = "127.0.0.1";
-	$dbuser = "root";
-	$dbpass = "root";
-	$dbname = "hackathon";
+	$dbserver = $config['dbserver'];
+	$dbuser = $config['dbuser'];
+	$dbpass = $config['dbpass'];
+	$dbname = $config['dbname'];
 
 	$conn = new mysqli($dbserver, $dbuser, $dbpass, $dbname);
 
