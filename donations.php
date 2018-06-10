@@ -127,44 +127,19 @@ $(document).ready(function()
   var n=11;
   var a=["Post1","Post1","Post1"];
   var headings=["Post1","Post1","Post1"];
-  var content='<div>FoodName<br/>FoodQuantity<br/>FoodLocation<br/><br/><br/><br/><button class="btn btn-primary">Request</button>';
+  var content='<div>Place<br/>Venue<br/>Time<br/><br/><br/><br/><button>click</button>';
 
-      for(i=0;i<17;i++)
-      {
-       /* if(i%4==0)
-        {
-          $("#accordion").append('<div> <div class="row"');
-          
-        }
+  var id=[];
+  var donorId=[];
+  var foodType=[];
+  var units=[];
+  var foodDescription=[];
+  var date=[];
+  var status=[];
+  var donorname=[];
+  var phoneno=[];
+  var location=[];
 
-         
-        $("#accordion").append('<div class="col-sm-3"> <div class="card" style="margin:0px; margin-bottom: 50px;  padding: 0px; "><div class="card-block" align="center"   ><img class="card-img-top" src="images/login.jpg" width="100%"  ><table style="margin: 10px"><tr><td>Item</td><td>&nbsp;&nbsp; : &nbsp;&nbsp;</td><td>ITEM 1</td></tr><tr><td>Quantity</td><td>&nbsp;&nbsp; : &nbsp;&nbsp;</td><td>1234</td></tr></table><button class="btn btn-primary bt" id='+i+' style="margin:10px; background-color:#545454; border: 0; color: #fff; padding: 5px 40px 5px 40px;" align="left"  >VIEW DETAILS</button></div></div></div>');
-
-
-          if(i%4==0)
-          {
-            $("#accordion").append('</div></div>');
-          }*/
-          if(i%4==0)
-        {
-          $("#accordion").append('<div> <div class="row"');
-          
-        }
-
-
-        $("#accordion").append('<div class="col-sm-3"><div id="panel" class="panel panel-primary">'+
-             '<div  class="panel-heading">'+a[i%3]+ '</div>'+
-            '<div  class="panel-body" >'+content+'</div>'+
-          ' </div> </div> </div>');
-
-
-          if(i%4==0)
-          {
-            $("#accordion").append('</div></div>');
-          }
-
-
-      }
 
 
 
@@ -184,13 +159,13 @@ $("#add_form").validate({
         },
         messages: {
             fname: {
-                required: "Please enter Food name."
+                required: "Please enter company name."
             },
             descr: {
                 required: "Please enter Description."
             },
           fquantity: {
-                required: "Please enter Quantity for Food."
+                required: "Please enter link for form."
             }
            
         },
@@ -198,7 +173,7 @@ $("#add_form").validate({
             var fname=$("#fname").val();
             var descr=$("#descr").val();
             var fquantity=$("#fquantity").val();
-          
+           alert('hi');
             var data={fname:fname,descr:descr,fquantity:fquantity}
     
    $.ajax({
@@ -208,10 +183,10 @@ $("#add_form").validate({
    data : data,
    beforeSend: function()
    { 
-   
+   alert('hi');
    },
    success :  function(response)
-      {     
+      {         alert('hi');
     location.reload();
      }
    });
@@ -220,9 +195,58 @@ $("#add_form").validate({
        });
         
       
+ 
+$(function(){
 
-      
 
+  $.get("retrievedata.php",function(data)
+  {
+  var obj = JSON.parse(data);
+  n = obj.length;
+  
+for(i=0;i<n;i++)
+  {
+  id[i]=obj[i]['id'];
+   donorId[i]=obj[i]['donorId'];
+   foodType[i]=obj[i]['foodType'];
+   units[i]=obj[i]['units'];
+   foodDescription[i]=obj[i]['foodDescription'];
+   date[i]=obj[i]['date'];
+   status[i]=obj[i]['status'];
+  donorname[i]=obj[i]['name'];
+   phoneno[i]=obj[i]['phone'];
+   location[i]=obj[i]['location'];
+
+
+    
+    
+     if(i%4==0)
+        {
+          $("#accordion").append('<div> <div class="row"');
+          
+        }
+
+         
+        $("#accordion").append('<div class="col-sm-3"> <div class="card" style="margin:0px; margin-bottom: 50px;  padding: 0px; "><div class="card-block" align="center"   ><img class="card-img-top" src="images/login.jpg" width="100%"  ><table style="margin: 10px"><tr><td>Item</td><td>&nbsp;&nbsp; : &nbsp;&nbsp;</td><td>'+foodType[i]+'</td></tr><tr><td>Quantity</td><td>&nbsp;&nbsp; : &nbsp;&nbsp;</td><td>'+units[i]+'</td></tr></table><button class="btv" id='+i+' style="margin:10px; background-color:#545454; border: 0; color: #fff; padding: 5px 40px 5px 40px;" align="center"  >VIEW DETAILS</button><button class="btv"  style="margin:10px; background-color:#545454; border: 0; color: #fff; padding: 5px 40px 5px 40px;" align="center" >REQUEST</button></div></div></div>');
+
+
+          if(i%4==0)
+          {
+            $("#accordion").append('</div></div>');
+          }
+
+
+
+
+
+
+  }
+
+
+
+
+});
+});
 
 
 
@@ -251,7 +275,7 @@ $("#add_form").validate({
         }
 
 
-        $("#accordion").append('<div class="col-sm-3"><div id="panel" class="panel panel-primary"> <div class="card" style="margin:0px; margin-bottom: 50px;  padding: 0px; "><div class="card-block" align="center"   ><img class="card-img-top" src="images/temp/biriyani.jpg" width="100%"  ><table style="margin: 10px"><tr><td>Item</td><td>&nbsp;&nbsp; : &nbsp;&nbsp;</td><td>ITEM 1</td></tr><tr><td>Quantity</td><td>&nbsp;&nbsp; : &nbsp;&nbsp;</td><td>1234</td></tr></table><button class="btn btn-primary"  style="margin:10px; background-color:#545454; border: 0; color: #fff; padding: 5px 40px 5px 40px;" align="center" onClick="showDetails("a","haha")" >VIEW DETAILS</button></div></div></div>,</div>');
+        $("#accordion").append('<div class="col-sm-3"><div id="panel" class="panel panel-primary"> <div class="card" style="margin:0px; margin-bottom: 50px;  padding: 0px; "><div class="card-block" align="center"   ><img class="card-img-top" src="images/temp/biriyani.jpg" width="100%"  ><table style="margin: 10px"><tr><td>Item</td><td>&nbsp;&nbsp; : &nbsp;&nbsp;</td><td>ITEM 1</td></tr><tr><td>Quantity</td><td>&nbsp;&nbsp; : &nbsp;&nbsp;</td><td>1234</td></tr></table><button class="bt"  style="margin:10px; background-color:#545454; border: 0; color: #fff; padding: 5px 40px 5px 40px;" align="center" onClick="showDetails("a","haha")" >VIEW DETAILS</button></div></div></div>,</div>');
 
 
           if(i%4==0)
@@ -265,9 +289,15 @@ $("#add_form").validate({
 
 
     });
-        $('body').on('click','.bt',function() {
+        $('body').on('click','.btv',function() {
        var name=$(this).attr('id');
-        alert(name);
+
+       $('#foodType').text(foodType[name]);
+       $('#unit').text(units[name]);
+       $('#name').text(donorname[name]);
+       $('#phone').text(phoneno[name]);
+       $('#location').text(location[name]);
+
 $('#haha').modal('show'); 
     });
 
@@ -320,7 +350,7 @@ $('#pending_r').on('click', function () {
 <div class="container-fluid text-center">    
   <div class="row content">
     <div class="col-sm-2 sidenav">
-      <h4 style="padding-top: 10px" id="user_name" class="text-center"><b></b></h4>
+      <h4 style="padding-top: 10px" class="text-center"><b>Welcome, User!</b></h4>
       <div style="display:table-cell; vertical-align:middle; text-align:center">
       <img src="images/admin.png" class="img-circle" height="100" width="100" alt="Avatar">
       </div>
@@ -332,7 +362,7 @@ $('#pending_r').on('click', function () {
         <li class="active"><a href="logout.php">Logout</a></li>
       </ul><br>
     </div>
-	 
+   
     <div class="col-sm-10 text-left" style="padding-top: 20px">
 
     
@@ -342,18 +372,7 @@ $('#pending_r').on('click', function () {
     <div id="accordion">
     
 
-  <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 col-xl-2">
-    <div class="card" style="margin:0px; margin-bottom: 50px;  padding: 0px; ">
   
-    <div class="card-block" align="center"  onClick="showDetails('a','haha')" >
-    <img class="card-img-top" src="images/login.jpg" width="100%"  >
-
-    <table style="margin: 10px">
-      <tr><td>Item</td><td>&nbsp;&nbsp; : &nbsp;&nbsp;</td><td>ITEM 1</td></tr>
-      <tr><td>Quantity</td><td>&nbsp;&nbsp; : &nbsp;&nbsp;</td><td>1234</td></tr>
-    </table>
-    <button id="bt'.$model.'" class="btn btn-primary bt" align="left" onClick="showDetails('a','haha')" >VIEW DETAILS</button>
-    </div>
     </div>
   </div>
 
@@ -361,7 +380,7 @@ $('#pending_r').on('click', function () {
 
   
 
-<div id="haha" class="modal">
+<div id="haha" class="modal"  id="mm">
       
         <!-- Modal content -->
         <div class="modal-content" style="margin:70px;">
@@ -377,12 +396,12 @@ $('#pending_r').on('click', function () {
           <tr style="border-bottom: 1px solid #545454;">
               <td class="desc_table" style="padding: 10px; margin: 20px; ">Food Type</td>
               <td class="desc_table" style="padding: 0px; margin: 0px; "> : </td>
-              <td class="desc_table" style="padding: 10px; margin: 20px; ">Biriyani</td>
+              <td id="foodType"class="desc_table" style="padding: 10px; margin: 20px; "></td>
               </tr>
           <tr style="border-bottom: 1px solid #545454;">
               <td class="desc_table" style="padding: 10px; margin: 20px; ">Units</td>
               <td class="desc_table" style="padding: 0px; margin: 0px; "> : </td>
-              <td class="desc_table" style="padding: 10px; margin: 20px; ">10</td>
+              <td class="desc_table" id="unit" style="padding: 10px; margin: 20px; ">10</td>
               </tr>
           <tr style="border-bottom: 1px solid #545454;">
               <td class="desc_table" style="padding: 10px; margin: 20px; ">Description</td>
@@ -392,24 +411,24 @@ $('#pending_r').on('click', function () {
           <tr style="border-bottom: 1px solid #545454;">
               <td class="desc_table" style="padding: 10px; margin: 20px; ">Donor Name</td>
               <td class="desc_table" style="padding: 0px; margin: 0px; "> : </td>
-              <td class="desc_table" style="padding: 10px; margin: 20px; ">SACHIN</td>
+              <td  id="name" class="desc_table" style="padding: 10px; margin: 20px; "></td>
               </tr>
           <tr style="border-bottom: 1px solid #545454;">
               <td class="desc_table" style="padding: 10px; margin: 20px; ">Donor Phone Number</td>
               <td class="desc_table" style="padding: 0px; margin: 0px; "> : </td>
-              <td class="desc_table" style="padding: 10px; margin: 20px; ">9876543210</td>
+              <td class="desc_table" id="phone" style="padding: 10px; margin: 20px; "></td>
               </tr>
 
           <tr style="border-bottom: 1px solid #545454;">
               <td class="desc_table" style="padding: 10px; margin: 20px; ">Pickup Location</td>
               <td class="desc_table" style="padding: 0px; margin: 0px; "> : </td>
-              <td class="desc_table" style="padding: 10px; margin: 20px; ">JP nagar, Bangalore</td>
+              <td class="desc_table"id="location" style="padding: 10px; margin: 20px; "></td>
               </tr>
             
           </table>
         
           <br><br><br>
-          <a href="#" ><button style="margin:10px; background-color:#545454; border: 0; color: #fff; padding: 5px 40px 5px 40px;" align="center" >REQUEST</button></a>
+         
         
           </div>
           </div>
@@ -455,9 +474,9 @@ $('#pending_r').on('click', function () {
       </div>  
     </div>
   </div>
-	
-		
-		</div>
+  
+    
+    </div>
 </div>
 
     </div>

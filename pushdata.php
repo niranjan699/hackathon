@@ -22,7 +22,7 @@ $dbserver = $config['dbserver'];
 
 
 $userid=$_SESSION['user_id'];
-$result2= mysqli_query($conn,"select id from users where ");
+
 
 $foodname=$_POST['fname']; 
 $description=$_POST['descr']; 
@@ -34,15 +34,15 @@ $donor_id = $_SESSION['user_id'];
 
 $units = "10";
 
-$foodDescription = "sd";
-#$date = "2018-08-08";
+
+
 $date = date("Y-m-d");
 echo($date);
 #$query = "insert into donations(id,donorId,foodType,units,foodDescription,date,status) values(NULL,'$donor_id','$units','$foodDescription','$date',NULL)";
 
 #$query = "insert into donations(id,donorId,foodType,units,foodDescription,date,status) values(NULL,'2','10','dsfoodDescription','2018-08-08','Pending')";
 
-$sql = 'INSERT INTO `donations` (id,donorId,foodName,units,foodDescription,date,status)
+$sql = 'INSERT INTO `donations` (id,donorId,foodType,units,foodDescription,date,status)
 VALUES (NULL,"'.$donor_id.'","'.$foodname.'","'.$fquant.'","'.$description.'","'.$date.'","Pending")';
 
 
