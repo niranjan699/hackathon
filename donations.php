@@ -127,24 +127,42 @@ $(document).ready(function()
   var n=11;
   var a=["Post1","Post1","Post1"];
   var headings=["Post1","Post1","Post1"];
-  var content='<div>Place<br/>Venue<br/>Time<br/><br/><br/><br/><button>click</button>';
+  var content='<div>FoodName<br/>FoodQuantity<br/>FoodLocation<br/><br/><br/><br/><button class="btn btn-primary">Request</button>';
 
       for(i=0;i<17;i++)
       {
-        if(i%4==0)
+       /* if(i%4==0)
         {
           $("#accordion").append('<div> <div class="row"');
           
         }
 
          
-        $("#accordion").append('<div class="col-sm-3"> <div class="card" style="margin:0px; margin-bottom: 50px;  padding: 0px; "><div class="card-block" align="center"   ><img class="card-img-top" src="images/login.jpg" width="100%"  ><table style="margin: 10px"><tr><td>Item</td><td>&nbsp;&nbsp; : &nbsp;&nbsp;</td><td>ITEM 1</td></tr><tr><td>Quantity</td><td>&nbsp;&nbsp; : &nbsp;&nbsp;</td><td>1234</td></tr></table><button class="bt" id='+i+' style="margin:10px; background-color:#545454; border: 0; color: #fff; padding: 5px 40px 5px 40px;" align="center"  >VIEW DETAILS</button></div></div></div>');
+        $("#accordion").append('<div class="col-sm-3"> <div class="card" style="margin:0px; margin-bottom: 50px;  padding: 0px; "><div class="card-block" align="center"   ><img class="card-img-top" src="images/login.jpg" width="100%"  ><table style="margin: 10px"><tr><td>Item</td><td>&nbsp;&nbsp; : &nbsp;&nbsp;</td><td>ITEM 1</td></tr><tr><td>Quantity</td><td>&nbsp;&nbsp; : &nbsp;&nbsp;</td><td>1234</td></tr></table><button class="bt" id='+i+' style="margin:10px; background-color:#545454; border: 0; color: #fff; padding: 5px 40px 5px 40px;" align="left"  >VIEW DETAILS</button></div></div></div>');
+
+
+          if(i%4==0)
+          {
+            $("#accordion").append('</div></div>');
+          }*/
+          if(i%4==0)
+        {
+          $("#accordion").append('<div> <div class="row"');
+          
+        }
+
+
+        $("#accordion").append('<div class="col-sm-3"><div id="panel" class="panel panel-primary">'+
+             '<div  class="panel-heading">'+a[i%3]+ '</div>'+
+            '<div  class="panel-body" >'+content+'</div>'+
+          ' </div> </div> </div>');
 
 
           if(i%4==0)
           {
             $("#accordion").append('</div></div>');
           }
+
 
       }
 
@@ -166,13 +184,13 @@ $("#add_form").validate({
         },
         messages: {
             fname: {
-                required: "Please enter company name."
+                required: "Please enter Food name."
             },
             descr: {
                 required: "Please enter Description."
             },
           fquantity: {
-                required: "Please enter link for form."
+                required: "Please enter Quantity for Food."
             }
            
         },
@@ -193,7 +211,7 @@ $("#add_form").validate({
    
    },
    success :  function(response)
-      {      
+      {     
     location.reload();
      }
    });
@@ -233,7 +251,7 @@ $("#add_form").validate({
         }
 
 
-        $("#accordion").append('<div class="col-sm-3"><div id="panel" class="panel panel-primary"> <div class="card" style="margin:0px; margin-bottom: 50px;  padding: 0px; "><div class="card-block" align="center"   ><img class="card-img-top" src="images/temp/biriyani.jpg" width="100%"  ><table style="margin: 10px"><tr><td>Item</td><td>&nbsp;&nbsp; : &nbsp;&nbsp;</td><td>ITEM 1</td></tr><tr><td>Quantity</td><td>&nbsp;&nbsp; : &nbsp;&nbsp;</td><td>1234</td></tr></table><button class="bt"  style="margin:10px; background-color:#545454; border: 0; color: #fff; padding: 5px 40px 5px 40px;" align="center" onClick="showDetails("a","haha")" >VIEW DETAILS</button></div></div></div>,</div>');
+        $("#accordion").append('<div class="col-sm-3"><div id="panel" class="panel panel-primary"> <div class="card" style="margin:0px; margin-bottom: 50px;  padding: 0px; "><div class="card-block" align="center"   ><img class="card-img-top" src="images/temp/biriyani.jpg" width="100%"  ><table style="margin: 10px"><tr><td>Item</td><td>&nbsp;&nbsp; : &nbsp;&nbsp;</td><td>ITEM 1</td></tr><tr><td>Quantity</td><td>&nbsp;&nbsp; : &nbsp;&nbsp;</td><td>1234</td></tr></table><button class="btn btn-primary"  style="margin:10px; background-color:#545454; border: 0; color: #fff; padding: 5px 40px 5px 40px;" align="center" onClick="showDetails("a","haha")" >VIEW DETAILS</button></div></div></div>,</div>');
 
 
           if(i%4==0)
@@ -302,7 +320,7 @@ $('#pending_r').on('click', function () {
 <div class="container-fluid text-center">    
   <div class="row content">
     <div class="col-sm-2 sidenav">
-      <h4 style="padding-top: 10px" class="text-center"><b>Welcome, User!</b></h4>
+      <h4 style="padding-top: 10px" id="user_name" class="text-center"><b></b></h4>
       <div style="display:table-cell; vertical-align:middle; text-align:center">
       <img src="images/admin.png" class="img-circle" height="100" width="100" alt="Avatar">
       </div>
@@ -334,7 +352,7 @@ $('#pending_r').on('click', function () {
       <tr><td>Item</td><td>&nbsp;&nbsp; : &nbsp;&nbsp;</td><td>ITEM 1</td></tr>
       <tr><td>Quantity</td><td>&nbsp;&nbsp; : &nbsp;&nbsp;</td><td>1234</td></tr>
     </table>
-    <button id="bt'.$model.'" style="margin:10px; background-color:#545454; border: 0; color: #fff; padding: 5px 40px 5px 40px;" align="center" onClick="showDetails('a','haha')" >VIEW DETAILS</button>
+    <button id="bt'.$model.'" class="btn btn-primary" align="left" onClick="showDetails('a','haha')" >VIEW DETAILS</button>
     </div>
     </div>
   </div>
