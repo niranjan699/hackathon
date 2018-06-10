@@ -218,7 +218,7 @@ input[type="submit"] {
 	    die("Connection failed: " . $conn->connect_error);
 	} 
 
-	$sql = 'select * from requests inner join notifications where requests.id = notifications.requestId and notifications.receiverId = '.$_SESSION['user_id'].';';
+	$sql = 'select * from requests inner join donations where requests.donationId = donations.id and requests.requestorId = '.$_SESSION['user_id'].';';
 	
 	$result = $conn->query($sql);
 	if (!$result) {
@@ -227,8 +227,8 @@ input[type="submit"] {
 	
 	
 	while ($row = $result->fetch_assoc()) {
-		$sql = 'select * from users where id = '.$row["requestorId"].';';
-		$requestor = $conn->query($sql)->fetch_assoc();
+		$sql = 'select * from users where id = '.$row["donorId"].';';
+		$donor = $conn->query($sql)->fetch_assoc();
 		$sql = 'select * from donations where id = '.$row["donationId"].';';
 		$donation = $conn->query($sql)->fetch_assoc();
 		
@@ -250,32 +250,32 @@ echo('
 	    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 col-xl-4">
 
 	    <div class="card-block" align="center" >
-	    <h4>Requestor Details</h4>
+	    <h4>Donor Details</h4>
 		<table>
           <tr style="border-bottom: 1px solid #545454;">
               <td class="desc_table" style="padding: 10px; margin: 20px; ">Name</td>
               <td class="desc_table" style="padding: 0px; margin: 0px; "> : </td>
-              <td class="desc_table" style="padding: 10px; margin: 20px; ">'.$requestor["name"].'</td>
+              <td class="desc_table" style="padding: 10px; margin: 20px; ">'.$donor["name"].'</td>
               </tr>
           <tr style="border-bottom: 1px solid #545454;">
               <td class="desc_table" style="padding: 10px; margin: 20px; ">Phone</td>
               <td class="desc_table" style="padding: 0px; margin: 0px; "> : </td>
-              <td class="desc_table" style="padding: 10px; margin: 20px; ">'.$requestor["phone"].'</td>
+              <td class="desc_table" style="padding: 10px; margin: 20px; ">'.$donor["phone"].'</td>
               </tr>
           <tr style="border-bottom: 1px solid #545454;">
               <td class="desc_table" style="padding: 10px; margin: 20px; ">Address</td>
               <td class="desc_table" style="padding: 0px; margin: 0px; "> : </td>
-              <td class="desc_table" style="padding: 10px; margin: 20px; ">'.$requestor["address"].','.$requestor["location"].','.$requestor["city"].'</td>
+              <td class="desc_table" style="padding: 10px; margin: 20px; ">'.$donor["address"].','.$donor["location"].','.$donor["city"].'</td>
               </tr>
           <tr style="border-bottom: 1px solid #545454;">
               <td class="desc_table" style="padding: 10px; margin: 20px; ">FoodType</td>
               <td class="desc_table" style="padding: 0px; margin: 0px; "> : </td>
-              <td class="desc_table" style="padding: 10px; margin: 20px; ">'.$donation["foodType"].'</td>
+              <td class="desc_table" style="padding: 10px; margin: 20px; ">'.$row["foodType"].'</td>
               </tr>
           <tr>
               <td class="desc_table" style="padding: 10px; margin: 20px; ">Date</td>
               <td class="desc_table" style="padding: 0px; margin: 0px; "> : </td>
-              <td class="desc_table" style="padding: 10px; margin: 20px; ">'.$donation["date"].'</td>
+              <td class="desc_table" style="padding: 10px; margin: 20px; ">'.$row["date"].'</td>
               </tr>
             
           </table>	    
@@ -285,27 +285,9 @@ echo('
 	     <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 col-xl-4">
 
 	    <div class="card-block" align="center" >
+      <h3>Donation Status</h3>
 	    <br><br><br>
-		<table>
-          <tr style="border-bottom: 1px solid #545454;">
-          	<form>
-          		<input type="submit" name="ACCEPT" value="ACCEPT" />
-          	</form>
-              </tr>
-          <tr style="border-bottom: 1px solid #545454;">
-           
-              </tr>
-              <tr style="border-bottom: 1px solid #545454;">
-           
-              </tr>
-          <tr style="border-bottom: 1px solid #545454;">
-             <form>
-          		<input type="submit" name="ACCEPT" value="REJECT" />
-          	</form>
-              </tr>
-         
-            
-          </table>	    
+		    '.$row['status'].'
           </div>
 	    </div>
 
