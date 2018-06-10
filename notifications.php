@@ -218,7 +218,7 @@ input[type="submit"] {
 	    die("Connection failed: " . $conn->connect_error);
 	} 
 
-	$sql = 'select * from requests inner join notifications where requests.id = notifications.requestId and notifications.receiverId = '.$_SESSION['user_id'].';';
+	$sql = 'select * from requests inner join notifications where requests.id = notifications.requestId and notifications.status = 0 and notifications.receiverId = '.$_SESSION['user_id'].';';
 	
 	$result = $conn->query($sql);
 	if (!$result) {
@@ -232,7 +232,6 @@ input[type="submit"] {
 		$sql = 'select * from donations where id = '.$row["donationId"].';';
 		$donation = $conn->query($sql)->fetch_assoc();
 		
-
 echo('
 
 <div >
@@ -288,9 +287,11 @@ echo('
 	    <br><br><br>
 		<table>
           <tr style="border-bottom: 1px solid #545454;">
-          	<form>
+          	<form action="updateNotification.php" method="POST">
+          		<input type="Hidden" name="status" value="ACCEPTED"/>
+          		<input type="Hidden" name="id" value="'.$row["id"].'"/>
           		<input type="submit" name="ACCEPT" value="ACCEPT" />
-          	</form>
+              </form>
               </tr>
           <tr style="border-bottom: 1px solid #545454;">
            
@@ -299,8 +300,10 @@ echo('
            
               </tr>
           <tr style="border-bottom: 1px solid #545454;">
-             <form>
-          		<input type="submit" name="ACCEPT" value="REJECT" />
+             <form action="updateNotification.php" method="POST">
+          		<input type="Hidden" name="status" value="REJECTED"/>
+          		<input type="Hidden" name="id" value="'.$row["id"].'"/>
+          		<input type="submit" name="REJECT" value="REJECT" />
           	</form>
               </tr>
          

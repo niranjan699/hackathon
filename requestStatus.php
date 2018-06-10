@@ -218,7 +218,7 @@ input[type="submit"] {
 	    die("Connection failed: " . $conn->connect_error);
 	} 
 
-	$sql = 'select * from requests inner join donations where requests.donationId = donations.id and requests.requestorId = '.$_SESSION['user_id'].';';
+	$sql = 'select requests.donationId,requests.date,requests.status,donations.donorId,donations.foodType,donations.units from requests inner join donations where requests.donationId = donations.id and requests.date >= now()-INTERVAL 24 HOUR and requests.requestorId = '.$_SESSION['user_id'].';';
 	
 	$result = $conn->query($sql);
 	if (!$result) {

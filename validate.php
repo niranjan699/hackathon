@@ -5,7 +5,6 @@ error_reporting(E_ALL);
 session_start();
 
 $email = $password = "";
-echo('Hello');
 
 if ($_SERVER["REQUEST_METHOD"] != "POST") {
 	echo('location:notFound.html');
