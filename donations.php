@@ -203,10 +203,12 @@ $(function(){
   {
   var obj = JSON.parse(data);
   n = obj.length;
-  
-for(i=0;i<n;i++)
-  {
+  for(i=0;i<n;i++)
   id[i]=obj[i]['id'];
+for(i in id)
+  {
+    
+    
    donorId[i]=obj[i]['donorId'];
    foodType[i]=obj[i]['foodType'];
    units[i]=obj[i]['units'];
@@ -225,14 +227,14 @@ for(i=0;i<n;i++)
           $("#accordion").append('<div> <div class="row"');
           
         }
-
+       
          
-        $("#accordion").append('<div class="col-sm-3"> <div class="card" style="margin:0px; margin-bottom: 50px;  padding: 0px; "><div class="card-block" align="center"   ><img class="card-img-top" src="images/login.jpg" width="100%"  ><table style="margin: 10px"><tr><td>Item</td><td>&nbsp;&nbsp; : &nbsp;&nbsp;</td><td>'+foodType[i]+'</td></tr><tr><td>Quantity</td><td>&nbsp;&nbsp; : &nbsp;&nbsp;</td><td>'+units[i]+'</td></tr></table><button class="btv" id='+i+' style="margin:10px; background-color:#545454; border: 0; color: #fff; padding: 5px 40px 5px 40px;" align="center"  >VIEW DETAILS</button><button class="btv"  style="margin:10px; background-color:#545454; border: 0; color: #fff; padding: 5px 40px 5px 40px;" align="center" >REQUEST</button></div></div></div>');
+        $("#accordion").append('<div class="col-sm-3"> <div class="card" style="margin:0px; margin-bottom: 50px;  padding: 0px; "><div class="card-block" align="center"   ><img class="card-img-top" src="images/login.jpg" width="100%"  ><table style="margin: 10px"><tr><td>Item</td><td>&nbsp;&nbsp; : &nbsp;&nbsp;</td><td>'+foodType[i]+'</td></tr><tr><td>Quantity</td><td>&nbsp;&nbsp; : &nbsp;&nbsp;</td><td>'+units[i]+'</td></tr></table><button class="bt" id='+i+' style="margin:10px; background-color:#545454; border: 0; color: #fff; padding: 5px 40px 5px 40px;" align="center"  >VIEW DETAILS</button><button class="btv" id='+i+' style="margin:10px; background-color:#545454; border: 0; color: #fff; padding: 5px 40px 5px 40px;" align="center" >REQUEST</button></div></div></div>');
 
 
           if(i%4==0)
           {
-            $("#accordion").append('</div></div>');
+            $("#accordion").append('</div></div>'); 
           }
 
 
@@ -266,30 +268,13 @@ for(i=0;i<n;i++)
   var headings=["Post1","Post1","Post1"];
   var content='<div>Place<br/>Venue<br/>Time<br/><br/><br/><br/><button>click</button>';
 
-      for(i=0;i<17;i++)
-      {
-        if(i%4==0)
-        {
-          $("#accordion").append('<div> <div class="row"');
-          alert(i);
-        }
-
-
-        $("#accordion").append('<div class="col-sm-3"><div id="panel" class="panel panel-primary"> <div class="card" style="margin:0px; margin-bottom: 50px;  padding: 0px; "><div class="card-block" align="center"   ><img class="card-img-top" src="images/temp/biriyani.jpg" width="100%"  ><table style="margin: 10px"><tr><td>Item</td><td>&nbsp;&nbsp; : &nbsp;&nbsp;</td><td>ITEM 1</td></tr><tr><td>Quantity</td><td>&nbsp;&nbsp; : &nbsp;&nbsp;</td><td>1234</td></tr></table><button class="bt"  style="margin:10px; background-color:#545454; border: 0; color: #fff; padding: 5px 40px 5px 40px;" align="center" onClick="showDetails("a","haha")" >VIEW DETAILS</button></div></div></div>,</div>');
-
-
-          if(i%4==0)
-          {
-            $("#accordion").append('</div></div>');
-          }
-
-      }
+     
 
 
 
 
     });
-        $('body').on('click','.btv',function() {
+        $('body').on('click','.bt',function() {
        var name=$(this).attr('id');
 
        $('#foodType').text(foodType[name]);
@@ -297,8 +282,8 @@ for(i=0;i<n;i++)
        $('#name').text(donorname[name]);
        $('#phone').text(phoneno[name]);
        $('#location').text(location[name]);
-
-$('#haha').modal('show'); 
+       $('#foodDescription').text(foodDescription[name]);
+       $('#haha').modal('show'); 
     });
 
 
@@ -315,8 +300,51 @@ $('#pending_r').on('click', function () {
         alert('pending requests');
     });
 
+ $('body').on('click','.btv',function() {
+       var name=$(this).attr('id');
+       var donationid=id[name];
+       var donorid=donorId[name];
+       var food=foodType[name];
+var data={donorid:donorid,donationid:donationid}
+    
+   $.ajax({
+    
+   type : 'POST',
+   url  : 'sendRequest.php',
+   data : data,
+   beforeSend: function()
+   { 
+ 
+   },
+   success :  function(response)
+      {   alert("requested for "+donationid);     
+    location.reload();
+     }
+   });
+    return false;
+
+
+
+
+
+
+
+
+
+
+       
+    });
+
+
+
+
+
+
+
+
      
     });
+
 
 
 
@@ -406,7 +434,7 @@ $('#pending_r').on('click', function () {
           <tr style="border-bottom: 1px solid #545454;">
               <td class="desc_table" style="padding: 10px; margin: 20px; ">Description</td>
               <td class="desc_table" style="padding: 0px; margin: 0px; "> : </td>
-              <td class="desc_table" style="padding: 10px; margin: 20px; ">hmmm</td>
+              <td class="desc_table" id="foodDescription" style="padding: 10px; margin: 20px; "></td>
               </tr>
           <tr style="border-bottom: 1px solid #545454;">
               <td class="desc_table" style="padding: 10px; margin: 20px; ">Donor Name</td>

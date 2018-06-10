@@ -14,9 +14,9 @@ $dbserver = $config['dbserver'];
 	} 
 
 
-$sql = "SELECT * FROM donations,users where donations.donorId=users.id and donations.status='PENDING'";
+$sql = "SELECT donations.id,donations.donorId,donations.foodType,donations.foodDescription,donations.date,donations.units,donations.status,users.name,users.phone,users.location FROM donations,users where donations.donorId=users.id and donations.status='PENDING'";
 $result = mysqli_query($conn, $sql);
-
+  
 if (mysqli_num_rows($result) > 0) {
     // output data of each row
 	//$row = mysqli_fetch_assoc($result)
