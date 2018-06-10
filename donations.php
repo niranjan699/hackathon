@@ -114,7 +114,7 @@ if(!isset($_SESSION['user_id'])){
   </style>
 <script>
   
-  
+      
 
   
     function showDetails(btId,descId) {
@@ -144,6 +144,80 @@ if(!isset($_SESSION['user_id'])){
     
     
     }
+
+
+$(document).ready(function()
+    {
+
+
+  var n=11;
+  var a=["Post1","Post1","Post1"];
+  var headings=["Post1","Post1","Post1"];
+  var content='<div>Place<br/>Venue<br/>Time<br/><br/><br/><br/><button>click</button>';
+
+      for(i=0;i<17;i++)
+      {
+        if(i%4==0)
+        {
+          $("#accordion").append('<div> <div class="row"');
+          
+        }
+
+
+        $("#accordion").append('<div class="col-sm-3"> <div class="card" style="margin:0px; margin-bottom: 50px;  padding: 0px; "><div class="card-block" align="center"   ><img class="card-img-top" src="images/temp/biriyani.jpg" width="100%"  ><table style="margin: 10px"><tr><td>Item</td><td>&nbsp;&nbsp; : &nbsp;&nbsp;</td><td>ITEM 1</td></tr><tr><td>Quantity</td><td>&nbsp;&nbsp; : &nbsp;&nbsp;</td><td>1234</td></tr></table><button id="bt" style="margin:10px; background-color:#545454; border: 0; color: #fff; padding: 5px 40px 5px 40px;" align="center" onClick="showDetails("a","haha")" >VIEW DETAILS</button></div></div></div>');
+
+
+          if(i%4==0)
+          {
+            $("#accordion").append('</div></div>');
+          }
+
+      }
+
+
+
+
+       $('#home').on('click', function () {
+   var n=11;
+  var a=["Post1","Post1","Post1"];
+  var headings=["Post1","Post1","Post1"];
+  var content='<div>Place<br/>Venue<br/>Time<br/><br/><br/><br/><button>click</button>';
+
+      for(i=0;i<17;i++)
+      {
+        if(i%4==0)
+        {
+          $("#accordion").append('<div> <div class="row"');
+          alert(i);
+        }
+
+
+        $("#accordion").append('<div class="col-sm-3"><div id="panel" class="panel panel-primary"> <div class="card" style="margin:0px; margin-bottom: 50px;  padding: 0px; "><div class="card-block" align="center"   ><img class="card-img-top" src="images/temp/biriyani.jpg" width="100%"  ><table style="margin: 10px"><tr><td>Item</td><td>&nbsp;&nbsp; : &nbsp;&nbsp;</td><td>ITEM 1</td></tr><tr><td>Quantity</td><td>&nbsp;&nbsp; : &nbsp;&nbsp;</td><td>1234</td></tr></table><button id="bt" style="margin:10px; background-color:#545454; border: 0; color: #fff; padding: 5px 40px 5px 40px;" align="center" onClick="showDetails("a","haha")" >VIEW DETAILS</button></div></div></div>,</div>');
+
+
+          if(i%4==0)
+          {
+            $("#accordion").append('</div></div>');
+          }
+
+      }
+
+
+
+
+    });
+
+  $('#rfu').on('click', function () {
+        alert('requst for u');
+    });
+
+$('#pending_r').on('click', function () {
+        alert('pending requests');
+    });
+
+     
+    });
+
 </script>
   
   <style>
@@ -192,7 +266,7 @@ if(!isset($_SESSION['user_id'])){
     <div id="accordion">
     
 
-    <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 col-xl-2">
+  <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 col-xl-2">
     <div class="card" style="margin:0px; margin-bottom: 50px;  padding: 0px; ">
   
     <div class="card-block" align="center"  onClick="showDetails('a','haha')" >
@@ -205,7 +279,7 @@ if(!isset($_SESSION['user_id'])){
     <button id="bt'.$model.'" style="margin:10px; background-color:#545454; border: 0; color: #fff; padding: 5px 40px 5px 40px;" align="center" onClick="showDetails('a','haha')" >VIEW DETAILS</button>
     </div>
     </div>
-</div>
+  </div>
 
 <div id="haha" class="modal">
       
