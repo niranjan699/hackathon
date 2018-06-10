@@ -138,7 +138,7 @@ $(document).ready(function()
         }
 
          
-        $("#accordion").append('<div class="col-sm-3"> <div class="card" style="margin:0px; margin-bottom: 50px;  padding: 0px; "><div class="card-block" align="center"   ><img class="card-img-top" src="images/login.jpg" width="100%"  ><table style="margin: 10px"><tr><td>Item</td><td>&nbsp;&nbsp; : &nbsp;&nbsp;</td><td>ITEM 1</td></tr><tr><td>Quantity</td><td>&nbsp;&nbsp; : &nbsp;&nbsp;</td><td>1234</td></tr></table><button class="bt" id='+i+' style="margin:10px; background-color:#545454; border: 0; color: #fff; padding: 5px 40px 5px 40px;" align="left"  >VIEW DETAILS</button></div></div></div>');
+        $("#accordion").append('<div class="col-sm-3"> <div class="card" style="margin:0px; margin-bottom: 50px;  padding: 0px; "><div class="card-block" align="center"   ><img class="card-img-top" src="images/login.jpg" width="100%"  ><table style="margin: 10px"><tr><td>Item</td><td>&nbsp;&nbsp; : &nbsp;&nbsp;</td><td>ITEM 1</td></tr><tr><td>Quantity</td><td>&nbsp;&nbsp; : &nbsp;&nbsp;</td><td>1234</td></tr></table><button class="btn btn-primary bt" id='+i+' style="margin:10px; background-color:#545454; border: 0; color: #fff; padding: 5px 40px 5px 40px;" align="left"  >VIEW DETAILS</button></div></div></div>');
 
 
           if(i%4==0)
@@ -352,7 +352,7 @@ $('#pending_r').on('click', function () {
       <tr><td>Item</td><td>&nbsp;&nbsp; : &nbsp;&nbsp;</td><td>ITEM 1</td></tr>
       <tr><td>Quantity</td><td>&nbsp;&nbsp; : &nbsp;&nbsp;</td><td>1234</td></tr>
     </table>
-    <button id="bt'.$model.'" class="btn btn-primary" align="left" onClick="showDetails('a','haha')" >VIEW DETAILS</button>
+    <button id="bt'.$model.'" class="btn btn-primary bt" align="left" onClick="showDetails('a','haha')" >VIEW DETAILS</button>
     </div>
     </div>
   </div>

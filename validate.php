@@ -34,7 +34,7 @@ if ($_SERVER["REQUEST_METHOD"] != "POST") {
 	}else{
 		$row = $result->fetch_assoc();
 		if($row['password'] == $password){
-			$_SESSION['email'] = $email;
+			$_SESSION['email'] = $row['name'];
 			$_SESSION['name'] = $row['name'];
 			$_SESSION['user_id'] = $row['id'];
 			header('location:donations.php');

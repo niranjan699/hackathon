@@ -1,0 +1,213 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Food Share</title>
+ 
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="default.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+ <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+ <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/jquery.validate.js">
+	</script>
+	
+		<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <!-- For calendar popup -->
+  <style>
+
+ 
+    /* Remove the navbar's default margin-bottom and rounded borders */ 
+   /* Set height of the grid so .sidenav can be 100% (adjust if needed) */
+    .row.content {height: 100%}
+    
+    /* Set gray background color and 100% height */
+    .sidenav {
+      background-color: #f1f1f1;
+      height: 100%;
+    }
+    
+    /* Set black background color, white text and some padding */
+    footer {
+      background-color: #555;
+      color: white;
+      padding: 15px;
+    }
+    
+    /* On small screens, set height to 'auto' for sidenav and grid */
+    @media screen and (max-width: 767px) {
+      .sidenav {
+        height: 100%;
+        padding: 15px;
+      }
+      .row.content {height: auto;} 
+    }
+
+  </style>
+  <script>
+ 
+	
+	
+	
+	
+	
+	
+	
+    $(document).ready(function()
+    {
+
+
+  var n=11;
+  var a=["Post1","Post1","Post1"];
+  var headings=["Post1","Post1","Post1"];
+  var content='<div>Place<br/>Venue<br/>Time<br/><br/><br/><br/><button>click</button>';
+
+      for(i=0;i<7;i++)
+      {
+        if(i%3==0)
+        {
+          $("#accordion").append('<div> <div class="row"');
+          alert(i);
+        }
+
+
+        $("#accordion").append('<div class="col-sm-3"><div id="panel" class="panel panel-primary">'+
+             '<div  class="panel-heading">'+a[i%3]+ '</div>'+
+            '<div  class="panel-body" >'+content+'</div>'+
+          ' </div> </div> </div>');
+
+
+          if(i%5==0)
+          {
+            $("#accordion").append('</div></div>');
+          }
+
+      }
+
+     
+    });
+ 
+  
+ 
+  </script>
+  
+  <style>
+  #accordion-resizer {
+    padding: 10px;
+    width: 100%;
+    height:auto;
+  }
+  </style>
+</head>
+<body>
+
+
+
+<div id="header-wrapper">
+  <div id="header-wrapper2">
+    <div id="header" class="container" >
+      <div id="logo">
+        <h1><span style="color:white"> SHARE FOOD </span></a></h1>
+      </div>
+      
+    </div>
+  </div>
+</div>  
+<div class="container-fluid">
+  <div class="row content">
+    <div class="col-sm-2 sidenav">
+      <h4 style="padding-top: 10px" class="text-center"><b>Welcome, User!</b></h4>
+      <div style="display:table-cell; vertical-align:middle; text-align:center">
+      <img src="images/admin.png" class="img-circle" height="100" width="100" alt="Avatar">
+      </div>
+      <ul class="nav nav-pills nav-stacked" style="padding-top: 10px">
+        <li class="active" data-toggle="modal" data-target="#myModal"><a href="#section1">Home</a></li>
+         <li class="active"><a href="#section2">Your Requests</a></li>
+        <li class="active"><a href="#section2">Requests For You</a></li>
+      </ul><br>
+      <!--<div class="input-group">
+        <input type="text" class="form-control" placeholder="Search Blog..">
+        <span class="input-group-btn">
+          <button class="btn btn-default" type="button">
+            <span class="glyphicon glyphicon-search"></span>
+          </button>
+        </span>
+      </div>-->
+    </div>
+
+    <div class="col-sm-9">
+
+      <br/>
+      <h4>RECENT POSTS</h4>
+      <hr>
+
+      <div class="container" id="panels">
+        <div>
+
+        <div id="accordion"></div>
+</div>
+      </div>
+
+
+
+
+
+
+  <!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Please enter  Donation Details</h4>
+        </div>
+        <div class="modal-body">
+          <form method="POST" id="add_form">
+            <div class="form-group">
+              <label for="cname"> Food Item Name </label>
+            <input type="text" class="form-control" id="cname" name="cname">
+            </div>
+            <div class="form-group">
+              <label for="descr">Description:</label>
+              <input type="text" class="form-control" id="descr" name="descr">
+            </div>
+            <div class="form-group">
+              <label for="formli">Quantity</label>
+              <input type="text" class="form-control" id="formli" name="formli">
+            </div>
+            <div class="form-group">
+              <label for="sheetli">Location</label>
+              <input type="text" class="form-control" id="sheetli" name="sheetli">
+            </div>
+            <button type="submit" id="add_c" class="btn btn-default">Submit</button>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>  
+    </div>
+  </div>
+<!---->
+
+
+    </div>
+  </div>
+</div>
+
+
+
+<!--<footer class="container-fluid text-center">
+  <p>Footer Text</p>
+</footer>-->
+
+</body>
+</html>
