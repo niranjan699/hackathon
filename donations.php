@@ -307,10 +307,10 @@ $('#pending_r').on('click', function () {
       <img src="images/admin.png" class="img-circle" height="100" width="100" alt="Avatar">
       </div>
       <ul class="nav nav-pills nav-stacked" style="padding-top: 10px">
-        <li class="active"><a href="#section1">Home</a></li>
-         <li class="active" data-toggle="modal" data-target="#myModal"><a href="#section1">Create Post</a></li>
-         <li class="active"><a href="#section2">Your Requests</a></li>
-        <li class="active"><a href="#section2">Requests For You</a></li>
+        <li class="active"><a href="donations.php">Home</a></li>
+         <li class="active" data-toggle="modal" data-target="#myModal"><a href="donations.php#section1">Create Post</a></li>
+         <li class="active"><a href="requestStatus.php">Your Requests</a></li>
+        <li class="active"><a href="notifications.php">Requests For You</a></li>
         <li class="active"><a href="logout.php">Logout</a></li>
       </ul><br>
     </div>
