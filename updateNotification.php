@@ -42,8 +42,15 @@ if ($_SERVER["REQUEST_METHOD"] != "POST") {
 			}
 			$row = $result->fetch_assoc();
 			$donationStatus = $status == 'ACCEPTED'? 'DONATED' : 'PENDING';
-			 $sql = 'Update donations set status="'.$donationStatus.'" where id = '.$row['donationId'];
-			 header('location:notifications.php');
+			 $sql = 'Update donations set status="'.$donationStatus.'" where id = '.$row['donationId'].';';
+
+			if ($conn->query($sql) === TRUE) {
+				header('location:notifications.php');
+			} else {
+				echo "Error updating record: " . $conn->error;
+			}
+			 
+			 
 
 			} else {
 			    echo "Error updating record: " . $conn->error;
