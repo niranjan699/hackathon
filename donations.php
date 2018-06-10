@@ -173,7 +173,7 @@ $("#add_form").validate({
             var fname=$("#fname").val();
             var descr=$("#descr").val();
             var fquantity=$("#fquantity").val();
-           alert('hi');
+         
             var data={fname:fname,descr:descr,fquantity:fquantity}
     
    $.ajax({
@@ -183,10 +183,10 @@ $("#add_form").validate({
    data : data,
    beforeSend: function()
    { 
-   alert('hi');
+ 
    },
    success :  function(response)
-      {         alert('hi');
+      {        
     location.reload();
      }
    });
