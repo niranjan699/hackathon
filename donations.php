@@ -8,6 +8,8 @@ if(!isset($_SESSION['user_id'])){
 }
 ?>
 
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -27,12 +29,16 @@ if(!isset($_SESSION['user_id'])){
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
  <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/jquery.validate.js">
+ 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/jquery.validate.js">
   </script>
-  
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+
+
   <style>
  
+   
     /* Remove the navbar's default margin-bottom and rounded borders */ 
     .navbar {
       margin-bottom: 0;
@@ -43,7 +49,7 @@ if(!isset($_SESSION['user_id'])){
   border-color: #ebccd1;
   font-size: 12px;
   /*padding:1px 20px 1px 20px;*/
-}
+		}
     /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
     .row.content {height: 450px}
     
@@ -111,25 +117,14 @@ if(!isset($_SESSION['user_id'])){
   
       
 
-  
-
-    
-    
-   
-    
-
-
-
 $(document).ready(function()
     {
 
   var userid = "<?php echo $_SESSION['user_id'] ?>";
   var userName = "<?php echo $_SESSION['name'] ?>";
   var n=11;
-  var a=["Post1","Post1","Post1"];
-  var headings=["Post1","Post1","Post1"];
-  var content='<div>Place<br/>Venue<br/>Time<br/><br/><br/><br/><button>click</button>';
 
+  var content='<div>Place<br/>Venue<br/>Time<br/><br/><br/><br/><button>click</button>';
   var id=[];
   var donorId=[];
   var foodType=[];
@@ -140,11 +135,9 @@ $(document).ready(function()
   var donorname=[];
   var phoneno=[];
   var location=[];
-
-  $("#Welcometext").text("Welcome "+userName);
-
-
-$("#add_form").validate({
+ $("#Welcometext").text("Welcome "+userName);
+ 
+  $("#add_form").validate({
 
         rules: {
             fname: {
@@ -199,12 +192,8 @@ $("#add_form").validate({
         }
        });
         
-      
- 
 $(function(){
-
-
-  $.get("retrievedata.php",function(data)
+ $.get("retrievedata.php",function(data)
   {
   var obj = JSON.parse(data);
   n = obj.length;
@@ -212,22 +201,16 @@ $(function(){
   id[i]=obj[i]['id'];
 for(i in id)
   {
-    
-    
-   donorId[i]=obj[i]['donorId'];
-   foodType[i]=obj[i]['foodType'];
-   units[i]=obj[i]['units'];
-   foodDescription[i]=obj[i]['foodDescription'];
-   date[i]=obj[i]['date'];
-   status[i]=obj[i]['status'];
-  donorname[i]=obj[i]['name'];
-   phoneno[i]=obj[i]['phone'];
-   location[i]=obj[i]['location'];
-
-
-    
-    
-     if(i%4==0)
+    donorId[i]=obj[i]['donorId'];
+    foodType[i]=obj[i]['foodType'];
+    units[i]=obj[i]['units'];
+    foodDescription[i]=obj[i]['foodDescription'];
+    date[i]=obj[i]['date'];
+    status[i]=obj[i]['status'];
+    donorname[i]=obj[i]['name'];
+    phoneno[i]=obj[i]['phone'];
+    location[i]=obj[i]['location'];
+  if(i%4==0)
         {
           $("#accordion").append('<div> <div class="row"');
           
@@ -235,16 +218,14 @@ for(i in id)
        
           if(userid!=donorId[i]){
         $("#accordion").append('<div class="col-sm-3"> <div class="card" style="margin:0px; margin-bottom: 50px;  padding: 0px; "><div class="card-block" align="center"   ><img class="card-img-top" src="images/login.jpg" width="100%"  ><table style="margin: 10px"><tr><td>Item</td><td>&nbsp;&nbsp; : &nbsp;&nbsp;</td><td>'+foodType[i]+'</td></tr><tr><td>Quantity</td><td>&nbsp;&nbsp; : &nbsp;&nbsp;</td><td>'+units[i]+'</td></tr></table><button class="bt" id='+i+' style="margin:10px; background-color:#545454; border: 0; color: #fff; padding: 5px 40px 5px 40px;" align="center"  >VIEW DETAILS</button><button class="btv" id='+i+' style="margin:10px; background-color:#545454; border: 0; color: #fff; padding: 5px 40px 5px 40px;" align="center" >REQUEST</button></div></div></div>');
-}
+			}
    
    else
    {
 
-$("#accordion").append('<div class="col-sm-3"> <div class="card" style="margin:0px; margin-bottom: 50px;  padding: 0px; "><div class="card-block" align="center"   ><img class="card-img-top" src="images/login.jpg" width="100%"  ><table style="margin: 10px"><tr><td>Item</td><td>&nbsp;&nbsp; : &nbsp;&nbsp;</td><td>'+foodType[i]+'</td></tr><tr><td>Quantity</td><td>&nbsp;&nbsp; : &nbsp;&nbsp;</td><td>'+units[i]+'</td></tr></table><button class="bt" id='+i+' style="margin:10px; background-color:#545454; border: 0; color: #fff; padding: 5px 40px 5px 40px;" align="center"  >VIEW DETAILS</button>');
+		$("#accordion").append('<div class="col-sm-3"> <div class="card" style="margin:0px; margin-bottom: 50px;  padding: 0px; "><div class="card-block" align="center"   ><img class="card-img-top" src="images/login.jpg" width="100%"  ><table style="margin: 10px"><tr><td>Item</td><td>&nbsp;&nbsp; : &nbsp;&nbsp;</td><td>'+foodType[i]+'</td></tr><tr><td>Quantity</td><td>&nbsp;&nbsp; : &nbsp;&nbsp;</td><td>'+units[i]+'</td></tr></table><button class="bt" id='+i+' style="margin:10px; background-color:#545454; border: 0; color: #fff; padding: 5px 40px 5px 40px;" align="center"  >VIEW DETAILS</button>');
 
-
-
-   }
+    }
 
 
 
@@ -264,18 +245,7 @@ $("#accordion").append('<div class="col-sm-3"> <div class="card" style="margin:0
 
 
 
-
-
-
-
-
-
-
-
-
-
-    
-        $('body').on('click','.bt',function() {
+ $('body').on('click','.bt',function() {
        var name=$(this).attr('id');
 
        $('#foodType').text(foodType[name]);
@@ -293,22 +263,13 @@ $("#accordion").append('<div class="col-sm-3"> <div class="card" style="margin:0
     });
 
 
-  $('#rfu').on('click', function () {
-        alert('requst for u');
-    });
-
-$('#pending_r').on('click', function () {
-        alert('pending requests');
-    });
-
  $('body').on('click','.btv',function() {
        var name=$(this).attr('id');
        var donationid=id[name];
        var donorid=donorId[name];
        var food=foodType[name];
-var data={donorid:donorid,donationid:donationid}
-    
-   $.ajax({
+	   var data={donorid:donorid,donationid:donationid}
+ $.ajax({
     
    type : 'POST',
    url  : 'sendRequest.php',
@@ -324,36 +285,13 @@ var data={donorid:donorid,donationid:donationid}
    });
     return false;
 
+ });
 
-
-
-
-
-
-
-
-
-       
-    });
-
-
-
-
-
-
-
-
-     
-    });
-
-
-
-
-
-
+ });
 
 </script>
   
+
   <style>
   #accordion-resizer {
     padding: 10px;
@@ -361,7 +299,9 @@ var data={donorid:donorid,donationid:donationid}
     height:auto;
   }
   </style>
+
 </head>
+
 
 <body style="font-family: Georgia;">
 
@@ -379,7 +319,7 @@ var data={donorid:donorid,donationid:donationid}
 <div class="container-fluid text-center">    
   <div class="row content">
     <div class="col-sm-2 sidenav">
-      <h4 style="padding-top: 10px" id="Welcometext"class="text-center"><b></b></h4>
+      <h4 style="padding-top: 10px" id="Welcometext" class="text-center"><b></b></h4>
       <div style="display:table-cell; vertical-align:middle; text-align:center">
       <img src="images/admin.png" class="img-circle" height="100" width="100" alt="Avatar">
       </div>
@@ -393,7 +333,7 @@ var data={donorid:donorid,donationid:donationid}
       </ul><br>
     </div>
    
-    <div class="col-sm-10 text-left" style="padding-top: 20px">
+   <div class="col-sm-10 text-left" style="padding-top: 20px">
 
     
 
@@ -401,14 +341,8 @@ var data={donorid:donorid,donationid:donationid}
 <div >
     <div id="accordion">
     
-
-  
     </div>
-  </div>
-
-
-
-  
+ </div>
 
 <div id="haha" class="modal"  id="mm">
       
