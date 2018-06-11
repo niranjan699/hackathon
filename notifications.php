@@ -133,7 +133,13 @@ input[type="submit"] {
   </style>
 <script>
   
-  
+  $(document).ready(function(){
+ var userName = "<?php echo $_SESSION['name'] ?>";
+
+  $("#Welcometext").text("Welcome "+userName);
+
+ }
+    );
 
   
     function showDetails(btId,descId) {
@@ -190,7 +196,7 @@ input[type="submit"] {
 <div class="container-fluid text-center">    
   <div class="row content">
     <div class="col-sm-2 sidenav">
-      <h4 style="padding-top: 10px" class="text-center"><b>Welcome, User!</b></h4>
+      <h4 style="padding-top: 10px"   id="Welcometext" class="text-center"><b></b></h4>
       <div style="display:table-cell; vertical-align:middle; text-align:center">
       <img src="images/admin.png" class="img-circle" height="100" width="100" alt="Avatar">
       </div>
@@ -199,6 +205,7 @@ input[type="submit"] {
          <li class="active" data-toggle="modal" data-target="#myModal"><a href="donations.php#section1">Create Post</a></li>
          <li class="active"><a href="requestStatus.php">Your Requests</a></li>
         <li class="active"><a href="notifications.php">Requests For You</a></li>
+         <li class="active"><a href="dashboard.php">DashBoard</a></li>
         <li class="active"><a href="logout.php">Logout</a></li>
       </ul><br>
     </div>

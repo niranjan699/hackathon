@@ -189,7 +189,7 @@ $("#add_form").validate({
    },
    success :  function(response)
       {        
-      	alert('Post SuccessFull ');
+        alert('Post SuccessFull ');
      $('#myModal').modal('toggle');    
 
         window.location.reload(true);
@@ -379,7 +379,7 @@ var data={donorid:donorid,donationid:donationid}
 <div class="container-fluid text-center">    
   <div class="row content">
     <div class="col-sm-2 sidenav">
-      <h4 style="padding-top: 10px" id="Welcometext"class="text-center"><b></b></h4>
+      <h4 style="padding-top: 10px" id="Welcometext" class="text-center"><b></b></h4>
       <div style="display:table-cell; vertical-align:middle; text-align:center">
       <img src="images/admin.png" class="img-circle" height="100" width="100" alt="Avatar">
       </div>
