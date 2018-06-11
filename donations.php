@@ -279,8 +279,8 @@ for(i in id)
  
    },
    success :  function(response)
-      {      
-    location.reload();
+      {   alert("request done");     
+    window.location.reload();
      }
    });
     return false;
