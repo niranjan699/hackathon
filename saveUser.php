@@ -3,7 +3,7 @@ $config = include('config.php');
 ini_set('display_errors', 'On');
 error_reporting(E_ALL);
 
-$name = $phone = $email = $address = $locaton = $city = $pincode = $password = "";
+$name = $phone = $email = $address = $location = $city = $pincode = $password = "";
 
 if ($_SERVER["REQUEST_METHOD"] != "POST") {
 	echo('location:notFound.html');
@@ -12,9 +12,9 @@ if ($_SERVER["REQUEST_METHOD"] != "POST") {
 	$phone = $_POST["phone"];
 	$email = $_POST["email"];
 	$address = $_POST["address"];
-	$locaton = $_POST["location"];
+	$location = $_POST["location"];
 	$city = $_POST["city"];
-	$pincode = $_POST["pincode"];
+	$pincode = $_POST["pin"];
 	$password = $_POST["password"];
 
 	$dbserver = $config['dbserver'];
