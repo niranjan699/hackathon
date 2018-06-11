@@ -29,7 +29,9 @@ if(!isset($_SESSION['user_id'])){
  <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/jquery.validate.js">
   </script>
- 
+ <script src="//code.jquery.com/jquery.min.js"></script>
+<script src="numberscript/animationCounter.js"></script>
+
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
   <style>
  
@@ -130,7 +132,7 @@ function drawChart() {
 ]);
 
   // Optional; add a title and set the width and height of the chart
-  var options = {'title':'House Hold Food Waste', 'width':550, 'height':400};
+  var options = {'title':'House Hold Food Waste', 'width':550, 'height':300};
 
   // Display the chart inside the <div> element with id="piechart"
   var chart = new google.visualization.PieChart(document.getElementById('piechart'));
@@ -163,14 +165,35 @@ $(document).ready(function()
  total=obj[0]['total'];
   contrib=obj[1]['contrib'];
 
-   $('#total').text("The total units of Food Saved "+total);
- $('#contrib').text("The total units of Food Saved by You "+contrib);
+
+/*remove comments here and put comments next section section */
+ //  $('#total').text("The total units of Food Saved "+total);
+ //$('#contrib').text("The total units of Food Saved by You "+contrib);
+
+
+/*remove  animations here and put comments previous section section */
+ $('#total').animationCounter({
+  start: 0,
+step: 1,
+
+  delay: 100,
+  txt: ' units of Food Saved',
+  end: total,
+
+});
+$('#contrib').animationCounter({
+  start: 0,
+ step: 1,
+
+  delay: 100,
+  txt: ' units of Food Saved By You ',
+  end: contrib,
 
 });
 
 
 
-  
+});
 
  });
 </script>
@@ -226,7 +249,7 @@ $(document).ready(function()
    <div class="row">
  
   <div class="col-sm-6" ">
-<iframe width="420" height="345" src="https://www.youtube.com/embed/IoCVrkcaH6Q">
+<iframe width="420" height="300" src="https://www.youtube.com/embed/IoCVrkcaH6Q">
 </iframe>
   </div>
 

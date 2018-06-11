@@ -279,7 +279,7 @@ for(i in id)
  
    },
    success :  function(response)
-      {   alert("requested for "+donationid);     
+      {      
     location.reload();
      }
    });
